@@ -23,7 +23,10 @@ const (
 )
 
 func main() {
-	encryptedText := blowfishj.Encrypt(Password, PlainText)
+	encryptedText, err := blowfishj.Encrypt(Password, PlainText)
+	if err != nil {
+		panic(err)
+	}
 	fmt.Println("Encrypted text:", encryptedText)
 	decryptedText, err := blowfishj.Decrypt(Password, encryptedText)
 	if err != nil {
